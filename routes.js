@@ -1,11 +1,14 @@
 module.exports = function(app) {
 
 
-	app.get('/', function(req, res) {
+	app.get('/', function (req, res) {
 		res.render('index.html');
 	});
 
-	app.get('/*', function(req, res) {
+	app.post('/', accounts.signin);
+	
+
+	app.get('/*', function (req, res) {
 		res.render('error.html')
 	})
 }
