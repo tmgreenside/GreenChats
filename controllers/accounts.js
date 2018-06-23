@@ -1,4 +1,4 @@
-var pool = require('./database')
+var pool = require('./database');
 
 exports.signin = function (req, res) {
     if (req.body.enterEmail === "" || req.body.enterPass === "") {
@@ -31,7 +31,7 @@ exports.signup = function(req, res) {
             pass: req.body.pass1
         };
         stmt = "insert into Accounts (firstname, lastname, email, password) values (?, ?, ?, ?)";
-        connection.query(stmt, [n.firstname, n.lastname, n.email, n.pass], function(err, result) {
+        pool.query(stmt, [n.firstname, n.lastname, n.email, n.pass], function(err, result) {
             if (err) {
                 console.log("DB failed");
                 console.log(err);
