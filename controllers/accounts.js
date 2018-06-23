@@ -11,7 +11,15 @@ exports.signin = function (req, res) {
             if (err || result.length === 0)
                 return "";
             else {
-                return result;
+                req.session.user = {
+                    first: result[0].firstname,
+                    last: result[0].lastname,
+                    email: result[0].email,
+                    id: result[0].acctID
+                }
+                
+                console.log(req.session.user);
+                res.redirect('/home');
             }
         });
     }
@@ -35,9 +43,9 @@ exports.signup = function(req, res) {
             if (err) {
                 console.log("DB failed");
                 console.log(err);
-                return false;
+                res.redirect('/error');
             }
-            return true;
+            res.redirect('/');
         });
         
     }

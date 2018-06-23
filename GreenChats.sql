@@ -15,7 +15,7 @@ create table Accounts (
     password VARCHAR(40)
 );
 
-ALTER TABLE Accounts AUTO_INCREMENT=1000001;
+ALTER TABLE Accounts AUTO_INCREMENT=10001;
 
 create table Posts (
     postID INT PRIMARY KEY AUTO_INCREMENT,
