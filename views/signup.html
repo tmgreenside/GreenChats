@@ -3,24 +3,6 @@
         <head>
             <title>GreenChats | Homepage</title>
             <link type="text/css" rel="stylesheet" href="/static/standard.css" />
-            <script>
-                function handleForm() {
-                    if(document.getElementById('pass1').value !== document.getElementById('pass2').value) {
-                        document.getElementById('notify').innerHTML = "Passwords must match";
-                        document.getElementById('pass1').innerHTML = "";
-                        document.getElementById('pass2').innerHTML = "";
-                    } else if (document.getElementById('firstname') === "" || 
-                            document.getElementById('lastname') === "" ||
-                            document.getElementById('email') === "" ||
-                            document.getElementById('pass1') === "") {
-                        document.getElementById('notify').innerHTML = "Please complete all fields.";
-                        document.getElementById('pass1').innerHTML = "";
-                        document.getElementById('pass2').innerHTML = "";
-                    } else {
-                        // TRIGGER POST REQUEST
-                    }
-                }
-            </script>
         </head>
         <body>
             <div id="top_image">
@@ -30,14 +12,14 @@
                     <h3>Create an Account with GreenChats!</h3>
                     <p>We'll just need some basic information before we
                         can get started:</p>
-                    <form onsubmit="JavaScript:handleForm()">
+                    <form method="post">
                         First Name: <input type='text' id='firstname' name='firstname'><br>
                         Last Name: <input type='text' name='lastname' id='lastname'><br>
                         Email: <input type='email' name='email' id='email'><br>
                         Password: <input type='password' name='pass1' id='pass1'><br>
                         Re-enter Password: <input type='password' name='pass2' id='pass2'><br>
                         <p id='notify'><%= message %></p>
-                        <input type="submit" value="Log In">
+                        <input type="submit" value="Create Account">
                     </form>
 
                 </div>
