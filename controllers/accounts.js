@@ -1,3 +1,4 @@
+var CryptoJS = require("crypto-js");
 var pool = require('./database');
 
 exports.signin = function (req, res) {
@@ -16,7 +17,7 @@ exports.signin = function (req, res) {
                     last: result[0].lastname,
                     email: result[0].email,
                     id: result[0].acctID
-                }
+                };
                 
                 console.log(req.session.user);
                 res.redirect('/home');
@@ -50,3 +51,12 @@ exports.signup = function(req, res) {
         
     }
 };
+
+function hashPassword(pass){
+    var salt = "80868086"; //salt
+    var hash = CryptoJS.SHA512(salt + pass);
+    var password = hash.toString(CryptoJS.enc.Base64);
+    //this was causing an issue with database syntax...
+    password = password.replace("/", '');
+    return password;
+}
