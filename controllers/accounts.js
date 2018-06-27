@@ -10,16 +10,15 @@ exports.signin = function (req, res) {
         statement = "select * from Accounts where email = ? and password = ?";
         pool.query(statement, [userenter, hashed_pw], function (err, result) {
             if (err || result.length === 0)
-                return "";
+                res.redirect('/error');
             else {
                 req.session.user = {
-                    first: result[0].firstname,
-                    last: result[0].lastname,
-                    email: result[0].email,
-                    id: result[0].acctID
+                    first: result[0]['firstname'],
+                    last: result[0]['lastname'],
+                    email: result[0]['email'],
+                    id: result[0]['acctID']
                 };
-                
-                console.log(req.session.user);
+                console.log("User ID " + req.session.user.id);
                 res.redirect('/home');
             }
         });
@@ -50,6 +49,11 @@ exports.signup = function(req, res) {
         });
         
     }
+};
+
+exports.signout = function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
 };
 
 function hashPassword(pass){

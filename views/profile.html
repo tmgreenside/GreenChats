@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GreenChats | <%= firstname %>'s News Feed</title>
+        <title>GreenChats | <%= firstname %>'s Profile</title>
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
     </head>
     <body>
@@ -19,14 +19,8 @@
                     <textarea name="blogger"></textarea><br>
                     <input type='submit' value='Post'>
                 </form>
-                <h3><%= firstname %>'s News Feed</h3>
-                <% for (post in posts) { %>
-                <div class="post">
-                    <h5><%= posts[post]['firstname'] %> <%= posts[post]['lastname'] %> posted</h5>
-                    <article><%= posts[post]['content'] %></article><br>
-                    <time><%= posts[post]['postDate'] %></time>
-                </div>
-                <% } %>
+                <h3><%= firstname %> <%= lastname %>'s Profile</h3>
+                
             </div>
         </div>
     </body>

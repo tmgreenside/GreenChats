@@ -15,6 +15,10 @@ module.exports = function (app) {
     
     app.get('/home', content.show);
     
+    app.post('/home', content.postSubmit);
+    
+    app.get('/logout', accounts.signout);
+    
     app.post('/signup', accounts.signup);
 
     app.get('/*', function (req, res) {

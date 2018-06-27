@@ -1,6 +1,3 @@
 use GreenChats;
 
-insert into Accounts (firstname, lastname, email, password) values ("Trevor",
-"Greenside","trevmg7@gmail.com","pass");
-
-select * from Accounts;
+insert into following values (10002,10001);
