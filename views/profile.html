@@ -3,8 +3,19 @@
     <head>
         <title>GreenChats | <%= firstname %>'s Profile</title>
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
+        <script>
+            function showPosts() {
+                document.getElementById("posts").style.display = "initial";
+                document.getElementById("info").style.display = "none";
+            }
+            
+            function showInfo() {
+                document.getElementById("posts").style.display = "none";
+                document.getElementById("info").style.display = "initial";
+            }
+        </script>
     </head>
-    <body>
+    <body onload="showInfo()">
         <div id="top_image">
         </div>
         <div id='logout'>
@@ -14,12 +25,29 @@
         </div>
         <div id="main_page">	
             <div class="main_body">
-                <form method="post">
-                    <h5>What's on your mind?</h5><br>
-                    <textarea name="blogger"></textarea><br>
-                    <input type='submit' value='Post'>
-                </form>
-                <h3><%= firstname %> <%= lastname %>'s Profile</h3>
+                <button onClick="showPosts()">Posts</button>
+                <button onClick="showInfo()">About</button>
+                <div id="posts">
+                    <form method="post">
+                        <h5>What's on your mind?</h5><br>
+                        <textarea name="blogger"></textarea><br>
+                        <input type='submit' value='Post'>
+                    </form>
+                    <h3>Your Posts</h3>
+                    <% for (post in posts) { %>
+                        <div class="post">
+                            <h5><%= posts[post]['firstname'] %> <%= posts[post]['lastname'] %> posted</h5>
+                            <article><%= posts[post]['content'] %></article><br>
+                            <time><%= posts[post]['postDate'] %></time>
+                        </div>
+                    <% } %>
+                </div>
+                <div id="info">
+                    <h3>About <%= firstname %> <%= lastname %></h3>
+                    <form action="/editProfile">
+                        <input type="submit" value="Edit" />
+                    </form>
+                </div>
                 
             </div>
         </div>
