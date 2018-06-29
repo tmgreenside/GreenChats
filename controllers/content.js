@@ -9,9 +9,10 @@ exports.show = function(req, res) {
     Accounts a, Following f WHERE (f.acct1 = ? AND a.acctID = f.acct2 AND\n\
     p.acctID = f.acct2) or (p.acctID = ? and a.acctID = ?) ORDER BY p.postDate LIMIT 500";
     pool.query(search, [req.session.user.id, req.session.user.id, req.session.user.id], function(err, result) {
-        if (err || result.length === 0)
+        if (err) {
             res.redirect('/error');
-        else {
+            console.log(err);
+        } else {
             var first = req.session.user.first;
             res.render('wall.html', {firstname: first, posts: result});
         }
@@ -28,4 +29,12 @@ exports.postSubmit = function(req, res) {
             res.redirect('/home');
         }
     });
+};
+
+exports.showProfile = function(req, res) {
+    if (!req.session.user) {
+        res.redirect('/');
+        return;
+    }
+    
 };

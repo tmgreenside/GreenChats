@@ -2,6 +2,7 @@ var CryptoJS = require("crypto-js");
 var pool = require('./database');
 
 exports.signin = function (req, res) {
+    // TODO: limit login attempts
     if (req.body.enterEmail === "" || req.body.enterPass === "") {
         res.render('/', {message: "Invalid email or password"});
     } else {
@@ -9,9 +10,11 @@ exports.signin = function (req, res) {
         hashed_pw = req.body.enterPass;
         statement = "select * from Accounts where email = ? and password = ?";
         pool.query(statement, [userenter, hashed_pw], function (err, result) {
-            if (err || result.length === 0)
+            if (err || result.length === 0) {
                 res.redirect('/error');
-            else {
+                console.log(err);
+                console.log(result);
+            } else {
                 req.session.user = {
                     first: result[0]['firstname'],
                     last: result[0]['lastname'],
@@ -36,17 +39,25 @@ exports.signup = function(req, res) {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            pass: req.body.pass1
+            birthdate: req.body.birthdate,
+            pass: req.body.pass1,
+            occupation: req.body.job_description
         };
-        stmt = "insert into Accounts (firstname, lastname, email, password) values (?, ?, ?, ?)";
-        pool.query(stmt, [n.firstname, n.lastname, n.email, n.pass], function(err, result) {
-            if (err) {
-                console.log("DB failed");
-                console.log(err);
-                res.redirect('/error');
-            }
-            res.redirect('/');
-        });
+        if (!n.firstname || n.firstname === "" || !n.lastname || n.lastname === "") {
+            res.render('signup.html', {message: "You must include your name"});
+        } else {
+            stmt = "insert into Accounts (firstname, lastname, email, birthdate, password, occupation) values (?, ?, ?, STR_TO_DATE(?, '%m/%d/%Y'), ?, ?)";
+            pool.query(stmt, [n.firstname, n.lastname, n.email, n.birthdate, n.pass, n.occupation], function(err, result) {
+                if (err) {
+                    console.log("DB failed");
+                    console.log(err);
+                    res.redirect('/error');
+                } else {
+                    res.redirect('/');
+                }
+            });
+        }
+        
         
     }
 };

@@ -13,13 +13,15 @@ module.exports = function (app) {
         res.render('signup.html', {message: ""});
     });
     
+    app.post('/signup', accounts.signup);
+    
     app.get('/home', content.show);
     
     app.post('/home', content.postSubmit);
     
     app.get('/logout', accounts.signout);
     
-    app.post('/signup', accounts.signup);
+    app.get('/profile', content.showProfile);
 
     app.get('/*', function (req, res) {
         res.render('error.html');
