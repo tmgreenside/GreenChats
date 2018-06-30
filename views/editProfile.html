@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GreenChats | Edit Profile</title>
+        <link type="text/css" rel="stylesheet" href="/static/standard.css" />
+    </head>
+    <body>
+        <div id="top_image">
+        </div>
+        <div id='logout'>
+            <form action="/logout">
+                <input type="submit" value="Logout" />
+            </form>
+        </div>
+        <div id="main_page">	
+            <div class="main_body">
+                <form method="post">
+                    First Name: <input type="text" name="firstname" value="<%= firstname %>"><br>
+                    Last Name: <input type="text" name="lastname" value="<%= lastname %>"><br>
+                    email: <input type="email" name="email" value="<%= email %>"><br>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
