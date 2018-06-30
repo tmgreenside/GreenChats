@@ -22,6 +22,9 @@ module.exports = function (app) {
     app.get('/logout', accounts.signout);
     
     app.get('/profile', content.showProfile);
+    app.post('/profile', content.postSubmit);
+    
+    app.get('/editProfile', content.editProfile);
 
     app.get('/*', function (req, res) {
         res.render('error.html');

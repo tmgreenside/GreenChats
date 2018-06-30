@@ -36,5 +36,25 @@ exports.showProfile = function(req, res) {
         res.redirect('/');
         return;
     }
-    
+    query1 = "SELECT * FROM Posts WHERE acctID = ?";
+    pool.query(query1, [req.session.user.id], function(err, result) {
+        if (err )
+            res.redirect('/error');
+        else {
+            resultPosts = result;
+            query2 = "SELECT * FROM Accounts A1 NATURAL JOIN Relationships NATURAL JOIN Accounts A2\n\
+WHERE A1.acctID = ?";
+            pool.query(query2, [req.session.user.id], function(err, result) {
+                res.render('profile.html', {
+                    firstname: req.session.user.first,
+                    lastname: req.session.user.last,
+                    posts: resultPosts
+                });
+            });
+        }
+    });
+};
+
+exports.editProfile = function(req, res) {
+    res.send("In progress");
 };

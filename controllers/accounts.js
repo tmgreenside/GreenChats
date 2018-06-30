@@ -21,7 +21,6 @@ exports.signin = function (req, res) {
                     email: result[0]['email'],
                     id: result[0]['acctID']
                 };
-                console.log("User ID " + req.session.user.id);
                 res.redirect('/home');
             }
         });
