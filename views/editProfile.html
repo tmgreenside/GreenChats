@@ -3,8 +3,14 @@
     <head>
         <title>GreenChats | Edit Profile</title>
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
+        <script>
+            function showInfo() {
+                document.getElementById("select_relationship").value = "<%= relationship_status %>";
+            };
+        </script>
+            
     </head>
-    <body>
+    <body onload="showInfo()">
         <div id="top_image">
         </div>
         <div id='logout'>
@@ -17,7 +23,20 @@
                 <form method="post">
                     First Name: <input type="text" name="firstname" value="<%= firstname %>"><br>
                     Last Name: <input type="text" name="lastname" value="<%= lastname %>"><br>
-                    email: <input type="email" name="email" value="<%= email %>"><br>
+                    Email: <input type="email" name="email" value="<%= email %>"><br>
+                    Occupation: <input type="text" name="job_description" value="<%= occupation %>"><br>
+                    Relationship:
+                    <select name="select_relationship" id="select_relationship">
+                        <option value="None">None</option>
+                        <option value="Single">Single</option>
+                        <option value="In a Relationship">In a Relationship</option>
+                        <option value="Engaged">Engaged</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                    <br>
+                    <input type="submit" value="Submit Changes" />
                 </form>
             </div>
         </div>

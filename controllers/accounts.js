@@ -45,8 +45,8 @@ exports.signup = function(req, res) {
         if (!n.firstname || n.firstname === "" || !n.lastname || n.lastname === "") {
             res.render('signup.html', {message: "You must include your name"});
         } else {
-            stmt = "insert into Accounts (firstname, lastname, email, birthdate, password, occupation) values (?, ?, ?, STR_TO_DATE(?, '%m/%d/%Y'), ?, ?)";
-            pool.query(stmt, [n.firstname, n.lastname, n.email, n.birthdate, n.pass, n.occupation], function(err, result) {
+            stmt = "insert into Accounts (firstname, lastname, email, birthdate, password, occupation, rel_status) values (?, ?, ?, STR_TO_DATE(?, '%m/%d/%Y'), ?, ?, ?)";
+            pool.query(stmt, [n.firstname, n.lastname, n.email, n.birthdate, n.pass, n.occupation, "None"], function(err, result) {
                 if (err) {
                     console.log("DB failed");
                     console.log(err);

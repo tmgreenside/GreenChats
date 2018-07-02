@@ -18,7 +18,8 @@ create table Accounts (
     email VARCHAR(30),
     password VARCHAR(40),
     birthdate DATE,
-    occupation VARCHAR(50)
+    occupation VARCHAR(50),
+    rel_status VARCHAR(30)
 );
 
 ALTER TABLE Accounts AUTO_INCREMENT=10001;
