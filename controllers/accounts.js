@@ -4,16 +4,18 @@ var pool = require('./database');
 exports.signin = function (req, res) {
     // TODO: limit login attempts
     if (req.body.enterEmail === "" || req.body.enterPass === "") {
-        res.render('/', {message: "Invalid email or password"});
+        res.render('index.html', {message: "Invalid email or password"});
     } else {
         userenter = req.body.enterEmail;
         hashed_pw = req.body.enterPass;
         statement = "select * from Accounts where email = ? and password = ?";
         pool.query(statement, [userenter, hashed_pw], function (err, result) {
-            if (err || result.length === 0) {
+            if (err) {
                 res.redirect('/error');
                 console.log(err);
                 console.log(result);
+            } else if (result.length === 0) {
+                res.render('index.html', {message: "Invalid email or password"});
             } else {
                 req.session.user = {
                     first: result[0]['firstname'],
@@ -55,8 +57,7 @@ exports.signup = function(req, res) {
                     res.redirect('/');
                 }
             });
-        }
-        
+        }  
         
     }
 };

@@ -20,8 +20,7 @@ exports.show = function(req, res) {
 };
 
 exports.postSubmit = function(req, res) {
-    insertQuery = "INSERT INTO Posts (content, acctID, postDate) VALUES (?, ?,\n\
-    NOW())";
+    insertQuery = "INSERT INTO Posts (content, acctID, postDate) VALUES (?, ?,NOW())";
     pool.query(insertQuery, [req.body.blogger, req.session.user.id], function(err, result) {
         if (err || result.length === 0)
             res.redirect('/error');
@@ -42,13 +41,13 @@ exports.showProfile = function(req, res) {
             res.redirect('/error');
         else {
             resultPosts = result;
-            query2 = "SELECT * FROM Accounts A1 NATURAL JOIN Relationships NATURAL JOIN Accounts A2\n\
-WHERE A1.acctID = ?";
-            pool.query(query2, [req.session.user.id], function(err, result) {
+            query2 = "SELECT firstname, lastname FROM Following f, Accounts a WHERE f.acct1 = ? AND a.acctID = f.acct2";
+            pool.query(query2, [req.session.user.id], function(err, result) { 
                 res.render('profile.html', {
                     firstname: req.session.user.first,
                     lastname: req.session.user.last,
-                    posts: resultPosts
+                    posts: resultPosts,
+                    friends: result
                 });
             });
         }

@@ -7,11 +7,19 @@
             function showPosts() {
                 document.getElementById("posts").style.display = "initial";
                 document.getElementById("info").style.display = "none";
+                document.getElementById("friends").style.display = "none";
             }
             
             function showInfo() {
                 document.getElementById("posts").style.display = "none";
                 document.getElementById("info").style.display = "initial";
+                document.getElementById("friends").style.display = "none";
+            }
+            
+            function showFriends() {
+                document.getElementById("posts").style.display = "none";
+                document.getElementById("info").style.display = "none";
+                document.getElementById("friends").style.display = "initial";
             }
         </script>
     </head>
@@ -27,6 +35,7 @@
             <div class="main_body">
                 <button onClick="showPosts()">Posts</button>
                 <button onClick="showInfo()">About</button>
+                <button onClick="showFriends()">Friends</button>
                 <div id="posts">
                     <form method="post">
                         <h5>What's on your mind?</h5><br>
@@ -36,7 +45,7 @@
                     <h3>Your Posts</h3>
                     <% for (post in posts) { %>
                         <div class="post">
-                            <h5><%= posts[post]['firstname'] %> <%= posts[post]['lastname'] %> posted</h5>
+                            <h5>You posted</h5>
                             <article><%= posts[post]['content'] %></article><br>
                             <time><%= posts[post]['postDate'] %></time>
                         </div>
@@ -48,7 +57,17 @@
                         <input type="submit" value="Edit" />
                     </form>
                 </div>
-                
+                <div id="friends">
+                    <h3><%= firstname %>'s Friends</h3>
+                    <% if (true) { %>
+                    <p>You have no friends. So sad. :(</p>
+                    <% } else { %>
+                    <% for (friend in friends) { %>
+                    <div class="friend">
+                        <h3><%= friends[friend]['firstname'] %> <%= friends[friend]['lastname'] %></h3>
+                    </div>
+                    <% } } %>
+                </div>
             </div>
         </div>
     </body>
