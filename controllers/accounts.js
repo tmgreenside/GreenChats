@@ -21,7 +21,8 @@ exports.signin = function (req, res) {
                     first: result[0]['firstname'],
                     last: result[0]['lastname'],
                     email: result[0]['email'],
-                    id: result[0]['acctID']
+                    id: result[0]['acctID'],
+                    birth: result[0]['birthdate']
                 };
                 res.redirect('/home');
             }

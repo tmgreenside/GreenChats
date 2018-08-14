@@ -52,7 +52,7 @@ exports.showProfile = function(req, res) {
                     lastname: req.session.user.last,
                     posts: resultPosts,
                     friends: result,
-                    birth: req.session.user.birthdate
+                    birth: req.session.user.birth
                 });
             });
         }

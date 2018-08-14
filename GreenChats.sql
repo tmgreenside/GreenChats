@@ -4,13 +4,6 @@ create schema GreenChats;
 
 use GreenChats;
 
-drop table if exists PostTags;
-drop table if exists Posts;
-drop table if exists Following;
-drop table if exists Requests;
-drop table if exists Relationships;
-drop table if exists Accounts;
-
 create table Accounts (
     acctID INT PRIMARY KEY AUTO_INCREMENT,
     firstname VARCHAR(20),

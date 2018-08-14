@@ -1,4 +1,4 @@
-#GreenChats
+GreenChats
 
 This is a blogging application with which I intend to experiment
 with secure web design methods. This project will allow users to create blogs of their own, not unlike
@@ -10,5 +10,8 @@ Templating is accomplished with EJS rendering.
 
 To Do:
 <ul>
+<li>retrieving and displaying data for user's profile</li>
+<li>viewing other user's profiles</li>
+<li>search bar showing results as the user types a query</li>
 <li>Cryptography for handling passwords</li>
 </ul>
