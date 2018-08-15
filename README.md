@@ -13,5 +13,6 @@ To Do:
 <li>retrieving and displaying data for user's profile</li>
 <li>viewing other user's profiles</li>
 <li>search bar showing results as the user types a query</li>
-<li>Cryptography for handling passwords</li>
+<li>Cryptography for handling passwords. According to <a href="https://expressjs.com/en/advanced/best-practice-security.html">this</a>,
+NGINX should handle the encryption between client and server.</li>
 </ul>

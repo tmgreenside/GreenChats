@@ -17,7 +17,8 @@ app.use(session({
     secret: 'this-is-a-secret-token',
     cookie: {maxAge: 60000*60},
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    name: 'sessionID'
 }));
 
 // settings for html content

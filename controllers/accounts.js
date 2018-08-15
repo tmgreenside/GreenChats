@@ -8,7 +8,7 @@ exports.signin = function (req, res) {
     } else {
         userenter = req.body.enterEmail;
         hashed_pw = req.body.enterPass;
-        statement = "select * from Accounts where email = ? and password = ?";
+        statement = "select firstname, lastname, email, acctID, DATE_FORMAT(birthdate, '%b %D, %Y') as birthdate from Accounts where email = ? and password = ?";
         pool.query(statement, [userenter, hashed_pw], function (err, result) {
             if (err) {
                 res.redirect('/error');
