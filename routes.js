@@ -1,5 +1,6 @@
 var accounts = require('./controllers/accounts');
 var content = require('./controllers/content');
+var friends = require('./controllers/friends');
 
 module.exports = function (app) {
 
@@ -25,6 +26,16 @@ module.exports = function (app) {
     app.post('/profile', content.postSubmit);
     
     app.get('/editProfile', content.editProfile);
+    
+    app.get('/findFriends', function (req, res) {
+        if (!req.session.user) {
+        res.redirect('/');
+        return;
+    }
+        res.render("friends.html", { current: "", results: [], message: "" });
+    });
+    
+    app.post('/findFriends', friends.search);
 
     app.get('/*', function (req, res) {
         res.render('error.html');

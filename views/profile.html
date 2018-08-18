@@ -26,10 +26,11 @@
     <body onload="showInfo()">
         <div id="top_image">
         </div>
-        <div id='logout'>
+        <div id='buttons'>
             <form action="/logout">
                 <input type="submit" value="Logout" />
             </form>
+            
         </div>
         <div id="main_page">	
             <div class="main_body">
@@ -62,7 +63,7 @@
                 </div>
                 <div id="friends">
                     <h3><%= firstname %>'s Friends</h3>
-                    <% if (true) { %>
+                    <% if (friends.length > 0) { %>
                     <p>You have no friends. So sad. :(</p>
                     <% } else { %>
                     <% for (friend in friends) { %>
@@ -70,6 +71,9 @@
                         <h3><%= friends[friend]['firstname'] %> <%= friends[friend]['lastname'] %></h3>
                     </div>
                     <% } } %>
+                    <form action="/findFriends">
+                        <input type="submit" value="Find Friends" />
+                    </form>
                 </div>
             </div>
         </div>

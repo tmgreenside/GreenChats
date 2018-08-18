@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GreenChats | <%= firstname %>'s News Feed</title>
+        <title>GreenChats | Find Friends</title>
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
     </head>
     <body>
@@ -23,19 +23,19 @@
         <div id="main_page">	
             <div class="main_body">
                 <form method="post">
-                    <h5>What's on your mind?</h5><br>
-                    <textarea name="blogger"></textarea><br>
-                    <input type='submit' value='Post'>
+                    <input type="text" name="searchEntry" value="<%= current %>" />
+                    <input type="submit" value="Search" />
                 </form>
-                <h3><%= firstname %>'s News Feed</h3>
-                <% for (post in posts) { %>
-                <div class="post">
-                    <h5><%= posts[post]['firstname'] %> <%= posts[post]['lastname'] %> posted</h5>
-                    <article><%= posts[post]['content'] %></article><br>
-                    <time><%= posts[post]['postDate'] %></time>
-                </div>
+                <% if (results.length > 0) { %>
+                    <% for (result in results) { %>
+                        <div class="friend">
+                            <h3><%= results[result]['firstname'] %> <%= results[result]['lastname'] %></h3>
+                        </div>
+                    <% } %>
                 <% } %>
+                <p><%= message %></p>
             </div>
+            
         </div>
     </body>
 </html>
