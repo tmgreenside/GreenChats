@@ -32,7 +32,7 @@ module.exports = function (app) {
         res.redirect('/');
         return;
     }
-        res.render("friends.html", { current: "", results: [], message: "" });
+        res.render("friends.html", { currentFirst: "", currentLast: "", results: [], message: "" });
     });
     
     app.post('/findFriends', friends.search);
