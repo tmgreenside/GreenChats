@@ -36,6 +36,8 @@ module.exports = function (app) {
     });
     
     app.post('/findFriends', friends.search);
+    
+    app.get('/profiles', friends.viewProfile);
 
     app.get('/*', function (req, res) {
         res.render('error.html');
