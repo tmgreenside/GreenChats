@@ -23,7 +23,7 @@ exports.viewProfile = function(req, res) {
         res.redirect('/');
         return;
     }
-    var id = req.params.id;
+    var id = req.query['id'];
     query1 = "SELECT * FROM Posts WHERE acctID = ?";
     pool.query(query1, [id], function(err, result) {
         if (err )
