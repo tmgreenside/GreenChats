@@ -20,7 +20,7 @@ exports.show = function(req, res) {
 };
 
 exports.postSubmit = function(req, res) {
-    var post = req.body.blogger.replace(/(?:\r\n|\r|\n)/g, '&#13;&#10;');
+    var post = req.body.blogger;
     insertQuery = "INSERT INTO Posts (content, acctID, postDate) VALUES (?, ?,NOW())";
     pool.query(insertQuery, [post, req.session.user.id], function(err, result) {
         if (err || result.length === 0)

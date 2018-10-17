@@ -47,7 +47,7 @@
                     <% for (post in posts) { %>
                         <div class="post">
                             <h5><%= firstname %> posted</h5>
-                            <article><%= posts[post]['content'] %></article><br>
+                            <article><%- posts[post]['content'].replace(/(?:\r\n|\r|\n)/g, '<br>'); %></article><br>
                             <time><%= posts[post]['postDate'] %></time>
                         </div>
                     <% } %>
