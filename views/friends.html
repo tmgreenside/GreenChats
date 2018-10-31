@@ -3,6 +3,18 @@
     <head>
         <title>GreenChats | Find Friends</title>
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
+        <script language = "javascript" type = "text/javascript">
+            function loadFriends() {
+                var ajaxRequest;
+
+                try {
+                    ajaxRequest = new XMLHttpRequest();
+                } catch(e) {
+                    alert("The thing broke");
+                    return false;
+                }
+            }
+        </script>
     </head>
     <body>
         <div id="top_image">
@@ -20,14 +32,18 @@
                 <input type="submit" value="Friends" />
             </form>
         </div>
-        <div id="main_page">	
+        <div id="main_page">
             <div class="main_body">
                 <form method="post">
                     First Name: <input type="text" name="searchFirst" value="<%= currentFirst %>" /><br>
                     Last Name: <input type="text" name="searchLast" value="<%= currentLast %>" /><br>
                     <input type="submit" value="Search" />
                 </form>
-                <% if (results.length > 0) { %>
+                <!-- uses Ajax to not reload the page -->
+                <div id="results">
+
+                </div>
+                <!-- <% if (results.length > 0) { %>
                     <% for (result in results) { %>
                         <div class="friend">
                             <h3>
@@ -37,10 +53,10 @@
                             </h3>
                         </div>
                     <% } %>
-                <% } %>
+                <% } %> -->
                 <p><%= message %></p>
             </div>
-            
+
         </div>
     </body>
 </html>

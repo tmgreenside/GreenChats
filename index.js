@@ -13,6 +13,7 @@ app.use(helmet()); // how to use this?
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 app.use(session({
     secret: 'this-is-a-secret-token',
     cookie: {maxAge: 60000*60},

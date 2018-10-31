@@ -15,4 +15,6 @@ To Do:
 <li>search bar showing results as the user types a query</li>
 <li>Cryptography for handling passwords. According to <a href="https://expressjs.com/en/advanced/best-practice-security.html">this</a>,
 NGINX should handle the encryption between client and server.</li>
+<li>For the Friends page, experiment with Ajax to populate results without reloading the page. Reference
+<a href="https://codeforgeek.com/2014/09/ajax-search-box-using-node-mysql/">this</a>.
 </ul>

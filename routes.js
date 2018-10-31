@@ -9,24 +9,24 @@ module.exports = function (app) {
     });
 
     app.post('/', accounts.signin);
-    
+
     app.get('/signup', function(req, res) {
         res.render('signup.html', {message: ""});
     });
-    
+
     app.post('/signup', accounts.signup);
-    
+
     app.get('/home', content.show);
-    
+
     app.post('/home', content.postSubmit);
-    
+
     app.get('/logout', accounts.signout);
-    
+
     app.get('/profile', content.showProfile);
     app.post('/profile', content.postSubmit);
-    
+
     app.get('/editProfile', content.editProfile);
-    
+
     app.get('/findFriends', function (req, res) {
         if (!req.session.user) {
         res.redirect('/');
@@ -34,10 +34,16 @@ module.exports = function (app) {
     }
         res.render("friends.html", { currentFirst: "", currentLast: "", results: [], message: "" });
     });
-    
+
     app.post('/findFriends', friends.search);
-    
+
     app.get('/profiles', friends.viewProfile);
+
+    // Experimental for a cross site scripting vulnerability
+    app.get('/alert', function(req, res) {
+        console.log(req.query['message']);
+        res.render('message.html', {message: req.query['message']});
+    });
 
     app.get('/*', function (req, res) {
         res.render('error.html');
