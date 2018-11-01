@@ -1,4 +1,5 @@
 var pool = require('./database');
+var request = require('ajax-request');
 
 exports.search = function(req, res) {
     if (!req.session.user) {
@@ -31,7 +32,7 @@ exports.viewProfile = function(req, res) {
         else {
             resultPosts = result;
             query2 = "SELECT firstname, lastname FROM Following f, Accounts a WHERE f.acct1 = ? AND a.acctID = f.acct2";
-            pool.query(query2, [id], function(err, result) { 
+            pool.query(query2, [id], function(err, result) {
                 resultFriends = result;
                 // TO DO: third query for user info section
                 query3 = "SELECT * from Accounts WHERE acctID = ?";
