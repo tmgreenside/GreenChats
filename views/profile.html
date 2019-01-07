@@ -21,6 +21,10 @@
                 document.getElementById("info").style.display = "none";
                 document.getElementById("friends").style.display = "initial";
             }
+            
+            function searchFriends() {
+                
+            }
         </script>
     </head>
     <body onload="showInfo()">
@@ -71,9 +75,10 @@
                         <h3><%= friends[friend]['firstname'] %> <%= friends[friend]['lastname'] %></h3>
                     </div>
                     <% } } %>
-                    <form action="/findFriends">
+<!--                    <form id="findFriendsForm" action="/findFriends">
                         <input type="submit" value="Find Friends" />
-                    </form>
+                    </form>-->
+                    <button id="findFriends">Find Friends</button>
                 </div>
             </div>
         </div>
