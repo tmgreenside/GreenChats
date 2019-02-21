@@ -43,11 +43,7 @@ exports.showProfile = function(req, res) {
         else {
             resultPosts = result;
             query2 = "SELECT firstname, lastname FROM Following f, Accounts a WHERE f.acct1 = ? AND a.acctID = f.acct2";
-            pool.query(query2, [req.session.user.id], function(err, result) { 
-                
-                // TO DO: third query for user info section
-                // query3 = "SELECT ";
-                
+            pool.query(query2, [req.session.user.id], function(err, result) {
                 res.render('profile.html', {
                     firstname: req.session.user.first,
                     lastname: req.session.user.last,

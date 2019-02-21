@@ -5,64 +5,64 @@
         <link type="text/css" rel="stylesheet" href="/static/standard.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-            
-            function searchFriends() {
-                var searchTerm = $('#friendSearchEntry').val();
-                if (searchTerm === "") {
-                    $('#friendSearchResults').empty();
-                    return;
-                }
-                $.ajax({
-                    type: "POST",
-                    url: "",
-                    data: {
-                        'searchEntry': searchTerm 
-                    },
-                    success: function(data) {
-                        $('#friendSearchResults').empty();
-                        $('#friendSearchResults').html(data);
-                    },
-                    failure: function(xhr, textStatus, errorThrown) {
-                        alert("Search failed");
-                    }
-                });
-            }
-            
-            var progressTimeout = null;
-            
-            $(document).ready(function() {
-                $('#findFriends').submit(function(event) {
-                    event.preventDefault();
-                    searchFriends();
-                });
-                
-                $('#friendSearchEntry').on("paste keydown", function(){
-                    if (progressTimeout) {
-                        clearTimeout(progressTimeout);
-                    }
-                    progressTimeout = setTimeout(searchFriends, 750);
-                });
-            });
-            
+
+            // function searchFriends() {
+            //     var searchTerm = $('#friendSearchEntry').val();
+            //     if (searchTerm === "") {
+            //         $('#friendSearchResults').empty();
+            //         return;
+            //     }
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "",
+            //         data: {
+            //             'searchEntry': searchTerm
+            //         },
+            //         success: function(data) {
+            //             $('#friendSearchResults').empty();
+            //             $('#friendSearchResults').html(data);
+            //         },
+            //         failure: function(xhr, textStatus, errorThrown) {
+            //             alert("Search failed");
+            //         }
+            //     });
+            // }
+            //
+            // var progressTimeout = null;
+            //
+            // $(document).ready(function() {
+            //     $('#findFriends').submit(function(event) {
+            //         event.preventDefault();
+            //         searchFriends();
+            //     });
+            //
+            //     $('#friendSearchEntry').on("paste keydown", function(){
+            //         if (progressTimeout) {
+            //             clearTimeout(progressTimeout);
+            //         }
+            //         progressTimeout = setTimeout(searchFriends, 750);
+            //     });
+            // });
+
             function showPosts() {
                 document.getElementById("posts").style.display = "initial";
                 document.getElementById("info").style.display = "none";
                 document.getElementById("friends").style.display = "none";
             }
-            
+
             function showInfo() {
                 document.getElementById("posts").style.display = "none";
                 document.getElementById("info").style.display = "initial";
                 document.getElementById("friends").style.display = "none";
             }
-            
+
             function showFriends() {
                 document.getElementById("posts").style.display = "none";
                 document.getElementById("info").style.display = "none";
                 document.getElementById("friends").style.display = "initial";
             }
-            
-            
+
+
         </script>
     </head>
     <body onload="showInfo()">
@@ -72,32 +72,34 @@
             <form action="/logout">
                 <input type="submit" value="Logout" />
             </form>
-            
+
         </div>
-        <div id="main_page">	
+        <div id="main_page">
             <div class="main_body">
                 <button onClick="showPosts()">Posts</button>
                 <button onClick="showInfo()">About</button>
                 <button onClick="showFriends()">Friends</button>
-                <form id="findFriends" style="float: right;">
+                <!-- <form id="findFriends" style="float: right;">
                     <input type="text" id="friendSearchEntry" placeholder="Find Friends...">
                     <button>Find Friends</button>
-                </form>
+                </form> -->
                 <div id="friendSearchResults" style="float: right;"></div>
-                
+
                 <div id="posts">
                     <form method="post">
                         <h5>What's on your mind?</h5><br>
-                        <textarea name="blogger"></textarea><br>
+                        <textarea name="blogger" placeholder="Write something here..."></textarea><br>
                         <input type='submit' value='Post'>
                     </form>
                     <h3><%= firstname %>'s Posts</h3>
-                    <% for (post in posts) { %>
-                        <div class="post">
-                            <h5><%= firstname %> posted</h5>
-                            <article><%- posts[post]['content'].replace(/(?:\r\n|\r|\n)/g, '<br>'); %></article><br>
-                            <time><%= posts[post]['postDate'] %></time>
-                        </div>
+                    <% if (posts.length > 0) { %>
+                        <% for (post in posts) { %>
+                            <div class="post">
+                                <h5><%= firstname %> posted</h5>
+                                <article><%- posts[post]['content'].replace(/(?:\r\n|\r|\n)/g, '<br>'); %></article><br>
+                                <time><%= posts[post]['postDate'] %></time>
+                            </div>
+                        <% } %>
                     <% } %>
                 </div>
                 <div id="info">
