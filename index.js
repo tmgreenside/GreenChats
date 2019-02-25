@@ -3,8 +3,14 @@ var app = express();
 
 var registration = require('./Registration/registration.js');
 
-app.use(express.static(path.join(__dirname, 'Templates')));
+app.set('view engine', 'ejs');
+app.set('views', './views')
+
+
 app.use('/Register', registration);
-app.set('view engine', 'html');
+
+app.get('/', function(req, res) {
+    res.render("index");
+});
 
 app.listen(8000);
