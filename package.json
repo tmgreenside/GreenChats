@@ -1,0 +1,23 @@
+{
+  "name": "greenchats",
+  "version": "2.0.0",
+  "description": "Simple skeleton social networking application used to explore secure web design practices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "runtest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmgreenside/GreenChats.git"
+  },
+  "author": "Trevor Greenside",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmgreenside/GreenChats/issues"
+  },
+  "homepage": "https://github.com/tmgreenside/GreenChats#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
