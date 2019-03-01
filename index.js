@@ -5,15 +5,18 @@ var session = require('express-session');
 var app = express();
 
 var registration = require('./Registration/registration.js');
+var account = require('./Accounts/accounts.js');
 
+app.engine('ejs', require('express-ejs-extend'));
 app.set('view engine', 'ejs');
-app.set('views', './views')
+app.set('views', './views');
 
 app.use(cookieParser());
 app.use('/register', registration);
+app.use('/account', account);
 
 app.get('/', function(req, res) {
-    res.render("index");
+    res.render("index", {"page_name":"Home"});
 });
 
 app.listen(8000);
