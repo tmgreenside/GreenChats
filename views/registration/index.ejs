@@ -10,7 +10,8 @@
     <br>
     <label>Date of Birth</label>
     <select name="birthMonth">
-        <option value="January" selected>January</option>
+        <option disabled selected>Month</option>
+        <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
         <option value="April">April</option>
@@ -25,12 +26,24 @@
     </select>
 
     <select name="birthDay">
+        <option disabled selected>Day</option>
         <% for (var i = 1; i <= 31; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+        <% } %>
+    </select>
+    <select name="birthYear">
+        <option disabled selected>Year</option>
+        <% var currentYear = new Date().getFullYear(); %>
+        <% for (var i = currentYear - 100; i <= currentYear; i++) { %>
             <option value="<%= i %>"><%= i %></option>
         <% } %>
     </select>
 </form>
 
-<script type="text/javascript">
-
+<script>
+$(document).ready(function() {
+    $('#birthMonth').on('change', function() {
+        alert($('#birthMonth').val());
+    });
+});
 </script>
