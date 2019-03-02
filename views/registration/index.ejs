@@ -1,10 +1,36 @@
-<% extend('base') %>
+<% extend('../base') %>
 <h1>Welcome to GreenChats!</h1>
 <p>We are excited to have you join us. Please fill in the fields
     below.</p>
 
 <form>
-    <input type="text" name="firstname" plaeholder="First name" required>
+    <input type="text" name="firstname" placeholder="First name" required>
     <input type="text" name="middlename" placeholder="Middle name">
     <input type="text" name="lastname" placeholder="Last name" required>
+    <br>
+    <label>Date of Birth</label>
+    <select name="birthMonth">
+        <option value="January" selected>January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+
+    <select name="birthDay">
+        <% for (var i = 1; i <= 31; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+        <% } %>
+    </select>
 </form>
+
+<script type="text/javascript">
+
+</script>
