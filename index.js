@@ -10,6 +10,7 @@ var account = require('./Accounts/accounts.js');
 app.engine('ejs', require('express-ejs-extend'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
+app.use(express.static('static'));
 
 app.use(cookieParser());
 app.use('/register', registration);
