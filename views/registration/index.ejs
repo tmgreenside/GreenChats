@@ -3,7 +3,7 @@
 <p>We are excited to have you join us. Please fill in the fields
     below.</p>
 
-<form>
+<form id="signupForm" method="POST">
     <input type="text" name="firstname" placeholder="First name" required>
     <input type="text" name="middlename" placeholder="Middle name">
     <input type="text" name="lastname" placeholder="Last name" required>
@@ -38,41 +38,52 @@
             <option value="<%= i %>"><%= i %></option>
         <% } %>
     </select>
+    <br>
+    <input type="password" placeholder="Password"><br>
+    <input type="password" placeholder="Re-enter Password"><br>
+    <button type="submit">Sign Up</button>
 </form>
 
 <script>
 $(document).ready(function() {
     $('#birthMonth').on('change', function() {
-        $("#birthDay > option").each(function() {
-            switch ($('#birthMonth').val()) {
-                case "September":
-                case "April":
-                case "June":
-                case "November":
+        switch ($('#birthMonth').val()) {
+            case "September":
+            case "April":
+            case "June":
+            case "November":
+                $("#birthDay > option").each(function() {
                     if (this.value > 30) {
                         this.remove();
                     }
-                    break;
-                case "February":
+                });
+                break;
+            case "February":
+                $("#birthDay > option").each(function() {
                     if (this.value > 29) {
                         this.remove();
                     }
-                default:
-                    if ($("#birthDay").size() < 31) {
-                        $('#mySelect').append($('<option>', {
-                            value: 30,
-                            text: '30'
-                        }));
-                    }
-                    if ($("#birthDay").size() < 32) {
-                        $('#mySelect').append($('<option>', {
-                            value: 31,
-                            text: '31'
-                        }));
-                    }
-                    break;
-            }
-        });
+                });
+                break;
+            default:
+                if ($("#birthDay option").length < 31) {
+                    $('#birthDay').append($('<option>', {
+                        value: 30,
+                        text: '30'
+                    }));
+                }
+                if ($("#birthDay option").length < 32) {
+                    $('#birthDay').append($('<option>', {
+                        value: 31,
+                        text: '31'
+                    }));
+                }
+                break;
+        }
+    });
+
+    $('#signupForm').on('submit', function() {
+        
     });
 });
 </script>
