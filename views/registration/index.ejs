@@ -9,7 +9,7 @@
     <input type="text" name="lastname" placeholder="Last name" required>
     <br>
     <label>Date of Birth</label>
-    <select name="birthMonth">
+    <select name="birthMonth" id="birthMonth">
         <option disabled selected>Month</option>
         <option value="January">January</option>
         <option value="February">February</option>
@@ -25,13 +25,13 @@
         <option value="December">December</option>
     </select>
 
-    <select name="birthDay">
+    <select name="birthDay" id="birthDay">
         <option disabled selected>Day</option>
         <% for (var i = 1; i <= 31; i++) { %>
             <option value="<%= i %>"><%= i %></option>
         <% } %>
     </select>
-    <select name="birthYear">
+    <select name="birthYear" id="birthYear">
         <option disabled selected>Year</option>
         <% var currentYear = new Date().getFullYear(); %>
         <% for (var i = currentYear - 100; i <= currentYear; i++) { %>
@@ -43,7 +43,36 @@
 <script>
 $(document).ready(function() {
     $('#birthMonth').on('change', function() {
-        alert($('#birthMonth').val());
+        $("#birthDay > option").each(function() {
+            switch ($('#birthMonth').val()) {
+                case "September":
+                case "April":
+                case "June":
+                case "November":
+                    if (this.value > 30) {
+                        this.remove();
+                    }
+                    break;
+                case "February":
+                    if (this.value > 29) {
+                        this.remove();
+                    }
+                default:
+                    if ($("#birthDay").size() < 31) {
+                        $('#mySelect').append($('<option>', {
+                            value: 30,
+                            text: '30'
+                        }));
+                    }
+                    if ($("#birthDay").size() < 32) {
+                        $('#mySelect').append($('<option>', {
+                            value: 31,
+                            text: '31'
+                        }));
+                    }
+                    break;
+            }
+        });
     });
 });
 </script>
