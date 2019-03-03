@@ -39,12 +39,32 @@
         <% } %>
     </select>
     <br>
-    <input type="password" placeholder="Password"><br>
-    <input type="password" placeholder="Re-enter Password"><br>
+    <input id="passEntry1" type="password" placeholder="Password"><br>
+    <input id="passEntry2" type="password" placeholder="Re-enter Password"><br>
+    <div id="passwordMessage"></div>
     <button type="submit">Sign Up</button>
 </form>
 
 <script>
+
+var progressTimeout = null;
+
+function passwordsMatch() {
+    if ($("#passEntry1").val() !== $("#passEntry2").val()) {
+        return false;
+    }
+    return true;
+}
+
+function checkPasswords() {
+    if (!passwordsMatch()) {
+        $("#passwordMessage").html("<p>Passwords must match.</p>");
+    }
+    else {
+        $("#passwordMessage").clear();
+    }
+}
+
 $(document).ready(function() {
     $('#birthMonth').on('change', function() {
         switch ($('#birthMonth').val()) {
@@ -82,8 +102,17 @@ $(document).ready(function() {
         }
     });
 
-    $('#signupForm').on('submit', function() {
-        
+    $("#passEntry1").on("keydown paste", function() {
+			if (progressTimeout) {
+				clearTimeout(progressTimeout);
+			}
+			progressTimeout = setTimeout(checkPasswords, 500);
+		});
+
+    $('#signupForm').on('submit', function(e) {
+        if (!passwordsMatch()) {
+            e.preventDefault();
+        }
     });
 });
 </script>
