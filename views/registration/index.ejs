@@ -11,7 +11,7 @@
     <input type="text" name="email" placeholder="Email" required>
     <br>
     <label>Date of Birth</label>
-    <select name="birthMonth" id="birthMonth">
+    <select name="birthMonth" id="birthMonth" required>
         <option disabled selected>Month</option>
         <option value="January">January</option>
         <option value="February">February</option>
@@ -27,13 +27,13 @@
         <option value="December">December</option>
     </select>
 
-    <select name="birthDay" id="birthDay">
+    <select name="birthDay" id="birthDay" required>
         <option disabled selected>Day</option>
         <% for (var i = 1; i <= 31; i++) { %>
             <option value="<%= i %>"><%= i %></option>
         <% } %>
     </select>
-    <select name="birthYear" id="birthYear">
+    <select name="birthYear" id="birthYear" required>
         <option disabled selected>Year</option>
         <% var currentYear = new Date().getFullYear(); %>
         <% for (var i = currentYear - 100; i <= currentYear; i++) { %>

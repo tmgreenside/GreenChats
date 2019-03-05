@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var fs = require('fs');
 
-// This file needs to be created
+// This file needs to be created for deployment.
 var credentials = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
 
 var pool = mysql.createPool(credentials);
