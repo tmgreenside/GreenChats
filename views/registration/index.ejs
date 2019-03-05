@@ -8,6 +8,8 @@
     <input type="text" name="middlename" placeholder="Middle name">
     <input type="text" name="lastname" placeholder="Last name" required>
     <br>
+    <input type="text" name="email" placeholder="Email" required>
+    <br>
     <label>Date of Birth</label>
     <select name="birthMonth" id="birthMonth">
         <option disabled selected>Month</option>
@@ -57,11 +59,12 @@ function passwordsMatch() {
 }
 
 function checkPasswords() {
-    if (!passwordsMatch()) {
-        $("#passwordMessage").html("<p>Passwords must match.</p>");
+    if (passwordsMatch() === false) {
+        $("#passwordMessage").html("<p style='color: red'>Passwords must match.</p>");
     }
     else {
-        $("#passwordMessage").clear();
+        alert("Passwords match");
+        $("#passwordMessage").html("");
     }
 }
 
@@ -103,15 +106,30 @@ $(document).ready(function() {
     });
 
     $("#passEntry1").on("keydown paste", function() {
-			if (progressTimeout) {
-				clearTimeout(progressTimeout);
-			}
-			progressTimeout = setTimeout(checkPasswords, 500);
-		});
+		if (progressTimeout) {
+			clearTimeout(progressTimeout);
+		}
+		progressTimeout = setTimeout(checkPasswords, 500);
+	});
+
+    $("#passEntry2").on("keydown paste", function() {
+		if (progressTimeout) {
+			clearTimeout(progressTimeout);
+		}
+		progressTimeout = setTimeout(checkPasswords, 500);
+	});
 
     $('#signupForm').on('submit', function(e) {
         if (!passwordsMatch()) {
             e.preventDefault();
+        }
+        else if ($('#firstname').val() === "" || $('#lastname').val() === "") {
+            e.preventDefault();
+            alert("Please enter a first and last name.");
+        }
+        else if ($('#email').val() === "") {
+            e.preventDefault();
+            alert("Please enter your email.");
         }
     });
 });
