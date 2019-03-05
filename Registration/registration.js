@@ -13,12 +13,8 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    if (req.body.passEntry1 !== req.body.passEntry2
-    || req.body.firstname === "" || req.body.lastname === ""
-    || req.body.email === "" ||
-    !validate.validateDate(req.body.birthMonth, req.body.birthDay, req.body.birthYear)) {
+    if (validate.checkRegisterData(req.body) === false) {
         res.redirect('/register');
-        // LEFT OFF HERE
     }
     else {
         var birthdate =
