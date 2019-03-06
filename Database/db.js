@@ -1,10 +1,12 @@
 var mysql = require('mysql');
 var fs = require('fs');
 
-// This file needs to be created for deployment.
-var credentials = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
+var credentials = require('./credentials.js');
 
-var pool = mysql.createPool(credentials);
+// This file needs to be created for deployment.
+var login = credentials.db;
+
+var pool = mysql.createPool(login);
 
 // Attempt to catch disconnects
 pool.on('connection', function (connection) {

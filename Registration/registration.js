@@ -17,12 +17,19 @@ router.post('/', function(req, res) {
         res.redirect('/register');
     }
     else {
-        var birthdate =
-        var insertion = "INSERT INTO Users VALUES (?, ?, ?, ?, ?)";
-        pool.query(insertion, [req.body.email, req.body.firstame,
-            req.body.middlename, req.body.lastname, req.body.passEntry1])
+        var birthdate = validate.parseDate(req.body);
+        var insertion = "INSERT INTO Users (email, firstname, middlename, lastname, birthdate, password) VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%m-%d-%Y'), ?)";
+        pool.query(insertion, [req.body.email, req.body.firstname,
+            req.body.middlename, req.body.lastname, birthdate, req.body.passEntry1],
+            function(err, result) {
+                if (err) {
+                    res.send("Error: " + err);
+                }
+                else {
+                    res.redirect('/');
+                }
+            });
     }
-    res.redirect('/');
 });
 
 module.exports = router;

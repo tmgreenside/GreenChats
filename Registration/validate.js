@@ -1,3 +1,6 @@
+var months = ["January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December"];
+
 exports.checkRegisterData = function(body) {
     if (body.passEntry1 !== body.passEntry2
     || body.firstname === "" || body.lastname === ""
@@ -10,18 +13,33 @@ exports.checkRegisterData = function(body) {
     return true;
 }
 
+exports.parseDate = function(body) {
+    var dateString = "";
+    for (var i = 0; i < months.length; i++) {
+        if (months[i] == body.birthMonth) {
+            monthNum = i+1
+            dateString = monthNum.toString();
+            break;
+        }
+    }
+    dateString = dateString.concat("-" + body.birthDay + "-" + body.birthYear);
+    return dateString;
+}
+
 function validateDate(monthIn, dayIn, yearIn) {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August",
-                    "September", "October", "November", "December"];
     var monthValid = false;
     for (var month in months) {
         if (month == monthIn) {
             monthValid = true;
+            break;
         }
     }
 
-    if (dayIn < 0 || dayIn > 31) {
+    if (isNaN(dayIn) || dayIn < 0 || dayIn > 31) {
         return false;
     }
+
+    if (isNaN(yearIn)) return false;
+
     return true;
 }

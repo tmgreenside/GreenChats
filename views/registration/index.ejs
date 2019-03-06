@@ -41,8 +41,8 @@
         <% } %>
     </select>
     <br>
-    <input id="passEntry1" type="password" placeholder="Password"><br>
-    <input id="passEntry2" type="password" placeholder="Re-enter Password"><br>
+    <input id="passEntry1" name="passEntry1" type="password" placeholder="Password"><br>
+    <input id="passEntry2" name="passEntry2" type="password" placeholder="Re-enter Password"><br>
     <div id="passwordMessage"></div>
     <button type="submit">Sign Up</button>
 </form>
@@ -63,7 +63,6 @@ function checkPasswords() {
         $("#passwordMessage").html("<p style='color: red'>Passwords must match.</p>");
     }
     else {
-        alert("Passwords match");
         $("#passwordMessage").html("");
     }
 }
