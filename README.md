@@ -15,7 +15,7 @@ standard accounts, including a section to delete or alter data.
 This directory contains routing and handlers for managing accounts, such as
 editing information and deleting an account.
 
-### Registration (in progress)
+### Registration 
 This directory contains functionality for creating an account. Future: may be merged
 with the Accounts directory.
 
