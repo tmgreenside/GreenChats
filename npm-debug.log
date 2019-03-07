@@ -1,98 +1,45 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'bugs',
-1 verbose cli   'greenchats' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@4.1.2
 3 info using node@v7.6.0
-4 silly fetchPackageMetaData greenchats
-5 silly fetchNamedPackageData greenchats
-6 silly mapToRegistry name greenchats
-7 silly mapToRegistry using default registry
-8 silly mapToRegistry registry https://registry.npmjs.org/
-9 silly mapToRegistry data Result {
-9 silly mapToRegistry   raw: 'greenchats',
-9 silly mapToRegistry   scope: null,
-9 silly mapToRegistry   escapedName: 'greenchats',
-9 silly mapToRegistry   name: 'greenchats',
-9 silly mapToRegistry   rawSpec: '',
-9 silly mapToRegistry   spec: 'latest',
-9 silly mapToRegistry   type: 'tag' }
-10 silly mapToRegistry uri https://registry.npmjs.org/greenchats
-11 verbose request uri https://registry.npmjs.org/greenchats
-12 verbose request no auth needed
-13 info attempt registry request try #1 at 10:47:59 PM
-14 verbose request id 8b5db3d74b23ea0b
-15 http request GET https://registry.npmjs.org/greenchats
-16 http 404 https://registry.npmjs.org/greenchats
-17 verbose headers { date: 'Thu, 07 Mar 2019 06:47:59 GMT',
-17 verbose headers   'content-type': 'application/json',
-17 verbose headers   'content-length': '21',
-17 verbose headers   connection: 'keep-alive',
-17 verbose headers   'set-cookie': [ '__cfduid=da5e0c5c89e168b7adb2d6a27a9aa8b221551941279; expires=Fri, 06-Mar-20 06:47:59 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
-17 verbose headers   'cf-cache-status': 'MISS',
-17 verbose headers   'cache-control': 'max-age=300',
-17 verbose headers   'cf-ray': '4b3a9f06986e79ed-SEA',
-17 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
-17 verbose headers   vary: 'accept-encoding, accept',
-17 verbose headers   server: 'cloudflare' }
-18 silly get cb [ 404,
-18 silly get   { date: 'Thu, 07 Mar 2019 06:47:59 GMT',
-18 silly get     'content-type': 'application/json',
-18 silly get     'content-length': '21',
-18 silly get     connection: 'keep-alive',
-18 silly get     'set-cookie': [ '__cfduid=da5e0c5c89e168b7adb2d6a27a9aa8b221551941279; expires=Fri, 06-Mar-20 06:47:59 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
-18 silly get     'cf-cache-status': 'MISS',
-18 silly get     'cache-control': 'max-age=300',
-18 silly get     'cf-ray': '4b3a9f06986e79ed-SEA',
-18 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
-18 silly get     vary: 'accept-encoding, accept',
-18 silly get     server: 'cloudflare' } ]
-19 silly fetchPackageMetaData Error: Not found : greenchats
-19 silly fetchPackageMetaData     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:304:12)
-19 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:292:14)
-19 silly fetchPackageMetaData     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:14)
-19 silly fetchPackageMetaData     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:186:22)
-19 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:192:7)
-19 silly fetchPackageMetaData     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1081:10)
-19 silly fetchPackageMetaData     at emitOne (events.js:96:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:189:7)
-19 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1001:12)
-19 silly fetchPackageMetaData  error for greenchats { Error: Not found : greenchats
-19 silly fetchPackageMetaData     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:304:12)
-19 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:292:14)
-19 silly fetchPackageMetaData     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:14)
-19 silly fetchPackageMetaData     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:186:22)
-19 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:192:7)
-19 silly fetchPackageMetaData     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1081:10)
-19 silly fetchPackageMetaData     at emitOne (events.js:96:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:189:7)
-19 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1001:12) pkgid: 'greenchats', statusCode: 404, code: 'E404' }
-20 verbose stack Error: Not found : greenchats
-20 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:304:12)
-20 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:292:14)
-20 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:14)
-20 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:186:22)
-20 verbose stack     at emitTwo (events.js:106:13)
-20 verbose stack     at Request.emit (events.js:192:7)
-20 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1081:10)
-20 verbose stack     at emitOne (events.js:96:13)
-20 verbose stack     at Request.emit (events.js:189:7)
-20 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1001:12)
-21 verbose statusCode 404
-22 verbose pkgid greenchats
-23 verbose cwd /Users/norabest/Desktop/GreenChats
-24 error Darwin 18.2.0
-25 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "bugs" "greenchats"
-26 error node v7.6.0
-27 error npm  v4.1.2
-28 error code E404
-29 error 404 Not found : greenchats
-30 error 404
-31 error 404 'greenchats' is not in the npm registry.
-32 error 404 You should bug the author to publish it (or use the name yourself!)
-33 error 404 Note that you can also install from a
-34 error 404 tarball, folder, http url, or git url.
-35 verbose exit [ 1, true ]
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle greenchats@2.0.0~prestart: greenchats@2.0.0
+6 silly lifecycle greenchats@2.0.0~prestart: no script for prestart, continuing
+7 info lifecycle greenchats@2.0.0~start: greenchats@2.0.0
+8 verbose lifecycle greenchats@2.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle greenchats@2.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/norabest/Desktop/GreenChats/node_modules/.bin:/Users/norabest/Downloads/google-cloud-sdk/bin:/usr/local/mysql/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/opt/sqlite/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/norabest/.rvm/bin
+10 verbose lifecycle greenchats@2.0.0~start: CWD: /Users/norabest/Desktop/GreenChats
+11 silly lifecycle greenchats@2.0.0~start: Args: [ '-c', 'node index.js' ]
+12 silly lifecycle greenchats@2.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle greenchats@2.0.0~start: Failed to exec start script
+14 verbose stack Error: greenchats@2.0.0 start: `node index.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:192:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:192:7)
+14 verbose stack     at maybeClose (internal/child_process.js:890:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid greenchats@2.0.0
+16 verbose cwd /Users/norabest/Desktop/GreenChats
+17 error Darwin 18.2.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+19 error node v7.6.0
+20 error npm  v4.1.2
+21 error code ELIFECYCLE
+22 error greenchats@2.0.0 start: `node index.js`
+22 error Exit status 1
+23 error Failed at the greenchats@2.0.0 start script 'node index.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the greenchats package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node index.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs greenchats
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls greenchats
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
