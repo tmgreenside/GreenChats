@@ -4,6 +4,7 @@
   "description": "Simple skeleton social networking application used to explore secure web design practices.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "runtest"
   },
   "repository": {

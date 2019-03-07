@@ -8,6 +8,7 @@ var app = express();
 
 var registration = require('./Registration/registration.js');
 var account = require('./Accounts/accounts.js');
+var profile = require('./Profile/profile.js');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.engine('ejs', require('express-ejs-extend'));
@@ -22,5 +23,7 @@ app.use('/account', account);
 app.get('/', function(req, res) {
     res.render("index", {"page_name":"Home"});
 });
+
+app.post('/', profile.login);
 
 app.listen(8000);
