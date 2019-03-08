@@ -27,10 +27,15 @@ $('document').ready(function() {
                 pass: passEntry
             },
             success: function(data) {
-                alert(data.response);
+                if (data.response === "success") {
+                    window.location.href("/");
+                }
+                else {
+                    $("#message").html("<p>Invalid email or password.</p>");
+                }
             },
             error: function() {
-                alert("Houston we have a problem");
+                $("#message").html("<p>GreenChats experienced an error. Please try again.</p>");
             }
         })
     });

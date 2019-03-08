@@ -27,7 +27,12 @@ app.use('/register', registration);
 app.use('/account', account);
 
 app.get('/', function(req, res) {
-    res.render("index", {"page_name":"Home"});
+    if (req.session.user) {
+        res.redirect('/wall');
+    }
+    else {
+        res.render("index", {"page_name":"Home"});
+    }
 });
 
 app.post('/', profile.login);
