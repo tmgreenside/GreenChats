@@ -10,7 +10,13 @@ exports.login = function(req, res) {
             res.send({response: "failure"});
         }
         else {
-            console.log(result[0]);
+            req.session.user = {
+                email: result[0]['email'],
+                first: result[0]['firstname'],
+                middle: result[0]['middlename'],
+                last: result[0]['lastname'],
+                id: result[0]['id']
+            }
             res.send({response: "success"});
         }
     });
