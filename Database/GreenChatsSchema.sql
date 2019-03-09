@@ -11,7 +11,8 @@ create table Users (
     middlename VARCHAR(50),
     lastname VARCHAR(50) NOT NULL,
     birthdate DATE NOT NULL,
-    password VARCHAR(100)
+    password VARCHAR(100),
+    gender VARCHAR(7)
 );
 
 create table Posts (
@@ -20,3 +21,9 @@ create table Posts (
     profile INT,
     FOREIGN KEY (profile) REFERENCES Users (id)
 );
+
+create table PostMedia (
+    postID INT,
+    path VARCHAR(4096),
+    FOREIGN KEY postID REFERENCES Posts(id)
+)
