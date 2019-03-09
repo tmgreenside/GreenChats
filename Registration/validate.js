@@ -4,7 +4,8 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 exports.checkRegisterData = function(body) {
     if (body.passEntry1 !== body.passEntry2
     || body.firstname === "" || body.lastname === ""
-    || body.email === "") {
+    || body.email === "" || (req.body.genderSelect !== "Male"
+    && req.body.genderSelect !== "Female")) {
         return false;
     }
     else if (validateDate(body.birthMonth, body.birthDay, body.birthYear) === false) {

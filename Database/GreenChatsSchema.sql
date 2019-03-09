@@ -11,19 +11,35 @@ create table Users (
     middlename VARCHAR(50),
     lastname VARCHAR(50) NOT NULL,
     birthdate DATE NOT NULL,
-    password VARCHAR(100),
-    gender VARCHAR(7)
+    gender VARCHAR(7),
+    password VARCHAR(100) NOT NULL
 );
 
 create table Posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     postText MEDIUMTEXT,
     profile INT,
+    postTime TIMESTAMP,
     FOREIGN KEY (profile) REFERENCES Users (id)
 );
 
 create table PostMedia (
     postID INT,
-    path VARCHAR(4096),
-    FOREIGN KEY postID REFERENCES Posts(id)
-)
+    type VARCHAR(5),
+    filePath VARCHAR(4096),
+    FOREIGN KEY (postID) REFERENCES Posts (id)
+);
+
+create table Friendships (
+    int profile1,
+    int profile2,
+    FOREIGN KEY (profile1) REFERENCES Users (id),
+    FOREIGN KEY (profile2) REFERENCES Users (id)
+);
+
+create table FriendRequests (
+    int sender,
+    int recipient,
+    FOREIGN KEY (sender) REFERENCES Users (id),
+    FOREIGN KEY (recipient) REFERENCES Users (id)
+);

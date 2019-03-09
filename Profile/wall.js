@@ -2,7 +2,7 @@
 function getUserContext(req) {
     var userContext = {
         'firstname': req.session.user.first,
-        'lastname': req.session.user.last
+        'lastname': req.session.user.last,
     };
     return userContext;
 }
