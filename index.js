@@ -8,7 +8,7 @@ var app = express();
 
 var registration = require('./Registration/registration.js');
 var account = require('./Accounts/accounts.js');
-var profile = require('./Profile/profile.js');
+var main = require('./Profile/main.js');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.engine('ejs', require('express-ejs-extend'));
@@ -17,7 +17,7 @@ app.set('views', './views');
 app.use(express.static('static'));
 app.use(cookieParser());
 app.use(session({
-    secret: "lucky cat",
+    secret: "lucky_cat",
     resave: false,
     saveUninitialized: false
  }));
@@ -25,16 +25,6 @@ app.use(session({
 app.use(cookieParser());
 app.use('/register', registration);
 app.use('/account', account);
-
-app.get('/', function(req, res) {
-    if (req.session.user) {
-        res.redirect('/wall');
-    }
-    else {
-        res.render("index", {"page_name":"Home"});
-    }
-});
-
-app.post('/', profile.login);
+app.use('/', main);
 
 app.listen(8000);
