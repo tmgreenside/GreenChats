@@ -13,3 +13,10 @@ create table Users (
     birthdate DATE NOT NULL,
     password VARCHAR(100)
 );
+
+create table Posts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    postText MEDIUMTEXT,
+    profile INT,
+    FOREIGN KEY (profile) REFERENCES Users (id)
+);
