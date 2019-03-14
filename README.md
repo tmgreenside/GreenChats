@@ -18,8 +18,8 @@ This directory contains the module for creating and maintaining a single
 connection to the database, which is then exported to the other modules. This
 also contains the schema definition for the application.
 * In deployment, an administrator will have to create a file called
-'credentials.js' that contains an object with authentication information to
-sign in to the database.
+'credentials.js' that contains a javascript object with authentication
+information to sign in to the database.
 
 ### Profile
 This contains login functionality and functions for retrieving blogging data

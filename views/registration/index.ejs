@@ -16,6 +16,7 @@
         <option value="Female">Female</option>
         <option value="Male">Male</option>
     </select>
+    <br>
     <label>Date of Birth</label>
     <select name="birthMonth" id="birthMonth" required>
         <option disabled selected>Month</option>
@@ -47,8 +48,8 @@
         <% } %>
     </select>
     <br>
-    <input id="passEntry1" name="passEntry1" type="password" placeholder="Password"><br>
-    <input id="passEntry2" name="passEntry2" type="password" placeholder="Re-enter Password"><br>
+    <input id="passEntry1" name="passEntry1" type="password" placeholder="Password" required><br>
+    <input id="passEntry2" name="passEntry2" type="password" placeholder="Re-enter Password" required><br>
     <div id="passwordMessage"></div>
     <button type="submit">Sign Up</button>
 </form>

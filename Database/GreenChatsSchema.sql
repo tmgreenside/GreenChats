@@ -31,15 +31,15 @@ create table PostMedia (
 );
 
 create table Friendships (
-    int profile1,
-    int profile2,
+    profile1 INT,
+    profile2 INT,
     FOREIGN KEY (profile1) REFERENCES Users (id),
     FOREIGN KEY (profile2) REFERENCES Users (id)
 );
 
 create table FriendRequests (
-    int sender,
-    int recipient,
+    sender INT,
+    recipient INT,
     FOREIGN KEY (sender) REFERENCES Users (id),
     FOREIGN KEY (recipient) REFERENCES Users (id)
 );

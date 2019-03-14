@@ -4,10 +4,6 @@ var validate = require('./validate');
 
 var router = express.Router();
 
-function getDateString(month, day, year) {
-
-}
-
 router.get('/', function(req, res) {
     res.render('registration/index', {"page_name":"Sign Up"});
 });
@@ -18,7 +14,7 @@ router.post('/', function(req, res) {
     }
     else {
         var birthdate = validate.parseDate(req.body);
-        var insertion = "INSERT INTO Users (email, firstname, middlename, lastname, birthdate, , gender, password) VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%m-%d-%Y'), ?, ?)";
+        var insertion = "INSERT INTO Users (email, firstname, middlename, lastname, birthdate, gender, password) VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%m-%d-%Y'), ?, ?)";
         pool.query(insertion, [req.body.email, req.body.firstname,
             req.body.middlename, req.body.lastname, birthdate, req.body.genderSelect,
             req.body.passEntry1],
