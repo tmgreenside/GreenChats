@@ -17,6 +17,7 @@ exports.displayNewsFeed = function(req, res) {
             res.send(err);
         }
         else {
+            context.resultPosts = result;
             pool.query(mediaPosts, [req.session.user.id], function(err, result2) {
                 res.render('profile/wall', context);
             });

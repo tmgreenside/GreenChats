@@ -1,7 +1,15 @@
 <% extend('base') %>
 
 <h3>This is the wall</h3>
-
+<form name="blogForm" id="blogForm" method="POST">
+    <textarea name="blog"></textarea><br>
+    <input type="submit" value="Share"></input>
+</form>
+<% var imageCount = 0; %>
 <% for (var i in resultPosts) { %>
-    resultPosts[i]
+    <div class="blogPost">
+        <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
+        <article><%= resultPosts[i]['postText'] %></article>
+        
+    </div>
 <% } %>
