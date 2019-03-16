@@ -9,7 +9,7 @@
 <% for (var i in resultPosts) { %>
     <div class="blogPost">
         <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
-        <article><%= resultPosts[i]['postText'] %></article>
-        
+        <article><%- resultPosts[i]['postText'] %></article>
+
     </div>
 <% } %>
