@@ -1,3 +1,16 @@
 <% extend('base') %>
 
 <h3><%= user.firstname %> <%= user.lastname %></h3>
+
+<div id="About" name="About">
+    <table>
+        <tr>
+            <td>Gender</td>
+            <td><%= user.gender %></td>
+        </tr>
+        <tr>
+            <td>Birthdate</td>
+            <td><%= user.birthdate %></td>
+        </tr>
+    </table>
+</div>

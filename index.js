@@ -11,7 +11,7 @@ var credential = require('./Database/credentials.js');
 
 var registration = require('./Registration/registration.js');
 var account = require('./Accounts/accounts.js');
-var main = require('./Profile/main.js');
+var main = require('./Profile/profile.js');
 
 var sessionStore = new mySQLStore(credential.db);
 
