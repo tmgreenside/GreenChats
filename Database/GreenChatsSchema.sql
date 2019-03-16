@@ -19,7 +19,7 @@ create table Posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     postText MEDIUMTEXT,
     profile INT,
-    postTime TIMESTAMP,
+    postTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (profile) REFERENCES Users (id)
 );
 

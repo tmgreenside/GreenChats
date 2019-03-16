@@ -33,6 +33,7 @@ with the Accounts directory.
 
 * Implement functionality for creating a page, adding friends, and sharing
 data through the site.
+* Learn to properly store session values server side.
 * Test this new version of the site against OWASP Top 10 one by one.
 * Learn to encrypt passwords.
 * Hack this site in as many ways as I can learn.

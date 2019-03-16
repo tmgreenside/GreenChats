@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
     if (req.session.user) {
-        res.redirect('/home');
+        res.redirect('/wall');
     }
     else {
         res.render("index", {"page_name":"Home", "message":""});
