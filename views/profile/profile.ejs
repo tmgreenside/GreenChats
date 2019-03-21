@@ -1,6 +1,6 @@
 <% extend('base') %>
 
-<h3><%= user.first %> <%= user.last %>'s Profile</h3>
+<h3><%= user.firstname %> <%= user.lastname %>'s Profile</h3>
 
 <div id="About" name="About">
     <table>
@@ -13,4 +13,10 @@
             <td><%= user.birthdate %></td>
         </tr>
     </table>
+</div>
+
+<div id="Posts" name="Posts">
+</div>
+
+<div id="Friends" name="Friends">
 </div>
