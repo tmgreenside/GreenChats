@@ -1,6 +1,7 @@
 var express = require('express');
 var login = require('./login.js');
 var wall = require('./wall.js');
+var main = require('./main.js');
 var router = express.Router();
 
 router.get('/', function(req, res) {
@@ -19,5 +20,7 @@ router.get('/logout', login.logout);
 router.get('/wall', wall.displayNewsFeed);
 
 router.post('/wall', wall.postWall);
+
+router.get('/home', main.getHomePage);
 
 module.exports = router;
