@@ -2,7 +2,12 @@
 
 <h3><%= user.firstname %> <%= user.lastname %>'s Profile</h3>
 
-<div id="About" name="About">
+<div id="homeButtons">
+    <button id="showAbout">About</button>
+    <button id="showPosts">Posts</button>
+</div>
+
+<div id="About" name="About" hidden>
     <table>
         <tr>
             <td>Gender</td>
@@ -16,6 +21,13 @@
 </div>
 
 <div id="Posts" name="Posts">
+    <% var imageCount = 0; %>
+    <% for (var i in resultPosts) { %>
+        <div class="blogPost">
+            <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
+            <article><%- resultPosts[i]['postText'].replace(/\n/g, "<br>") %></article>
+        </div>
+    <% } %>
 </div>
 
 <div id="Friends" name="Friends">

@@ -23,4 +23,6 @@ router.post('/wall', wall.postWall);
 
 router.get('/home', main.getHomePage);
 
+router.post('/searchFriends', search.search);
+
 module.exports = router;
