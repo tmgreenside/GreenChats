@@ -2,6 +2,7 @@ var express = require('express');
 var login = require('./login.js');
 var wall = require('./wall.js');
 var main = require('./main.js');
+var search = require('./search.js');
 var router = express.Router();
 
 router.get('/', function(req, res) {

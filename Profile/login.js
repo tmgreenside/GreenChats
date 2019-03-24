@@ -14,8 +14,8 @@ exports.login = function(req, res) {
         }
         else {
             req.session.user = {
-                first: result[0]['firstname'],
-                last: result[0]['lastname'],
+                firstname: result[0]['firstname'],
+                lastname: result[0]['lastname'],
                 id: result[0]['id']
             }
             res.redirect('/');

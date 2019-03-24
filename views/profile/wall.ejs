@@ -1,11 +1,11 @@
 <% extend('base') %>
 
-<h3>This is the wall</h3>
+<h3>Your Newsfeed</h3>
 <form name="blogForm" id="blogForm" method="POST">
     <textarea name="blog"></textarea><br>
     <input type="submit" value="Share"></input>
+    <input accept="audio/*, video/*, image/*">
 </form>
-<% var imageCount = 0; %>
 <% for (var i in resultPosts) { %>
     <div class="blogPost">
         <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
