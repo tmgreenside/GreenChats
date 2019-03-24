@@ -23,8 +23,8 @@
 <div id="Posts" name="Posts">
     <form name="blogForm" id="blogForm" method="POST">
         <textarea name="blog"></textarea><br>
+        <input type="file" accept="audio/*, video/*, image/*" multiple>
         <input type="submit" value="Share"></input>
-        <input accept="audio/*, video/*, image/*">
     </form>
     <% var imageCount = 0; %>
     <% for (var i in resultPosts) { %>
@@ -37,3 +37,15 @@
 
 <div id="Friends" name="Friends">
 </div>
+
+<script>
+    $("#showAbout").on("click", function() {
+        $("#Posts").hide();
+        $("#About").show();
+    });
+
+    $("#showPosts").on("click", function() {
+        $("#Posts").show();
+        $("#About").hide();
+    });
+</script>

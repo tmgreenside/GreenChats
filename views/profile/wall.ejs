@@ -4,7 +4,7 @@
 <form name="blogForm" id="blogForm" method="POST">
     <textarea name="blog"></textarea><br>
     <input type="submit" value="Share"></input>
-    <input accept="audio/*, video/*, image/*">
+    <input type="file" accept="audio/*, video/*, image/*" multiple>
 </form>
 <% for (var i in resultPosts) { %>
     <div class="blogPost">
