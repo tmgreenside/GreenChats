@@ -1,4 +1,5 @@
 var pool = require('../Database/db');
+var blogger = require('./blogger');
 
 function showProfile(profileID, req, res) {
     var dataQuery = "SELECT * FROM Users WHERE ID = ?";
@@ -30,6 +31,10 @@ own profile.
 */
 exports.getHomePage = function(req, res) {
     showProfile(req.session.user.id, req, res);
+}
+
+exports.postFromHome = function(req, res) {
+    submitPost(req, res, "home");
 }
 
 /*
