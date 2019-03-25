@@ -3,6 +3,10 @@ var login = require('./login.js');
 var wall = require('./wall.js');
 var main = require('./main.js');
 var search = require('./search.js');
+
+var multer  = require('multer')
+var upload = multer({ dest: './uploads/' })
+
 var router = express.Router();
 
 router.get('/', function(req, res) {
@@ -20,11 +24,15 @@ router.get('/logout', login.logout);
 
 router.get('/wall', wall.displayNewsFeed);
 
-router.post('/wall', wall.postWall);
+router.post('/wall', upload.none(), wall.postWall);
+router.post('/wall', upload.single('uploadFiles'), wall.postWall);
+router.post('/wall', upload.array('uploadFiles'), wall.postWall);
 
 router.get('/home', main.getHomePage);
 
-router.post('/home', main.postFromHome);
+router.post('/home', upload.array('uploadFiles'), main.postFromHome);
+router.post('/home', upload.single('uploadFiles'), main.postFromHome);
+router.post('/home', upload.none(), main.postFromHome);
 
 router.post('/searchFriends', search.search);
 

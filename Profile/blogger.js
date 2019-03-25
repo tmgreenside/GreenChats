@@ -8,11 +8,10 @@ exports.submitPost = function(req, res, source) {
             res.send(err);
         }
         else {
-            var filecount = req.body.uploadFiles.length;
-            for (var i = 0; i < filecount; i++) {
-                // TODO
-                // req.body.uploadFiles[i].mv("../Uploads/" + req.session.user.id + "/");
-                console.log(req.files.uploadFiles);
+            if (!req.files)
+                console.log('No files were uploaded.');
+            else {
+                console.log("There was a file");
             }
 
             if (source === "home") {
