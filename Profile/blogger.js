@@ -8,9 +8,12 @@ exports.submitPost = function(req, res, source) {
             res.send(err);
         }
         else {
-            console.log(result.insertId);
-            console.log(req.body.uploadFiles.length);
-            // TODO
+            var filecount = req.body.uploadFiles.length;
+            for (var i = 0; i < filecount; i++) {
+                // TODO
+                // req.body.uploadFiles[i].mv("../Uploads/" + req.session.user.id + "/");
+                console.log(req.files.uploadFiles);
+            }
 
             if (source === "home") {
                 res.redirect('/home');

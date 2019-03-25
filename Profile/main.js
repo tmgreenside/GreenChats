@@ -8,8 +8,8 @@ function showProfile(profileID, req, res) {
     pool.query(dataQuery, [profileID], function(err, result) {
         var context = {
             user: result[0],
-            firstname: req.session.user.first,
-            lastname: req.session.user.last,
+            firstname: req.session.user.firstname,
+            lastname: req.session.user.lastname,
         };
         pool.query(queryPosts, [profileID, profileID], function(err, result) {
             if (err) {

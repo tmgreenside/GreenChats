@@ -3,8 +3,8 @@ var blogger = require('./blogger');
 
 function getUserContext(req) {
     var userContext = {
-        'firstname': req.session.user.first,
-        'lastname': req.session.user.last,
+        'firstname': req.session.user.firstname,
+        'lastname': req.session.user.lastname,
     };
     return userContext;
 }

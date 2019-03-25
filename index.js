@@ -4,6 +4,7 @@ var session = require('express-session');
 var mysql = require('mysql');
 var mySQLStore = require('express-mysql-session')(session);
 var bodyParser = require('body-parser');
+var fileUpload = require('express-fileupload');
 
 var app = express();
 
@@ -15,6 +16,7 @@ var main = require('./Profile/profile.js');
 
 var sessionStore = new mySQLStore(credential.db);
 
+app.use(fileUpload());
 app.use(bodyParser.urlencoded({extended: false}));
 app.engine('ejs', require('express-ejs-extend'));
 app.set('view engine', 'ejs');
