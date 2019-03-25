@@ -1,3 +1,4 @@
+var multer  = require('multer');
 var pool = require('../Database/db');
 
 exports.submitPost = function(req, res, source) {
@@ -8,10 +9,15 @@ exports.submitPost = function(req, res, source) {
             res.send(err);
         }
         else {
-            if (!req.files)
-                console.log('No files were uploaded.');
-            else {
-                console.log("There was a file");
+            if (req.files) {
+                var storage = multer.diskStorage({
+                    destination: function (req, file, cb) {
+                        cb(null, 'uploads/');
+                    },
+                    filename: function (req, file, cb) {
+                        cb(null, Date.now() + path.extname(file.originalname)); //Appending extension
+                    }
+                });
             }
 
             if (source === "home") {

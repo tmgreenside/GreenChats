@@ -24,15 +24,11 @@ router.get('/logout', login.logout);
 
 router.get('/wall', wall.displayNewsFeed);
 
-router.post('/wall', upload.none(), wall.postWall);
-router.post('/wall', upload.single('uploadFiles'), wall.postWall);
-router.post('/wall', upload.array('uploadFiles'), wall.postWall);
+router.post('/wall', upload.any('uploadFiles'), wall.postWall);
 
 router.get('/home', main.getHomePage);
 
-router.post('/home', upload.array('uploadFiles'), main.postFromHome);
-router.post('/home', upload.single('uploadFiles'), main.postFromHome);
-router.post('/home', upload.none(), main.postFromHome);
+router.post('/home', upload.any('uploadFiles'), main.postFromHome);
 
 router.post('/searchFriends', search.search);
 
