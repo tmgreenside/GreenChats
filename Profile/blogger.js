@@ -10,7 +10,9 @@ exports.submitPost = function(req, res, source) {
         }
         else {
             if (req.files) {
-                console.log("We have files");
+                for (var file in req.files) {
+                    console.log(req.files[file].originalname);
+                }
             }
 
             if (source === "home") {
