@@ -4,8 +4,10 @@ var wall = require('./wall.js');
 var main = require('./main.js');
 var search = require('./search.js');
 
-var multer  = require('multer')
-var upload = multer({ dest: './uploads/' })
+var multer  = require('multer');
+var upload = multer({
+    dest: './uploads/'
+});
 
 var router = express.Router();
 

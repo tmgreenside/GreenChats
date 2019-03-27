@@ -10,16 +10,7 @@ exports.submitPost = function(req, res, source) {
         }
         else {
             if (req.files) {
-                var storage = multer.diskStorage({
-                    destination: function (req, file, cb) {
-                        cb(null, 'uploads/' + req.session.user.id + '/');
-                    },
-                    filename: function (req, file, cb) {
-                        console.log("original name: " + file.originalname);
-                        // cb(null, file.originalname + path.extname(file.originalname)); //Appending extension
-                        cb(null, "Bogusname.jpg");
-                    }
-                });
+                console.log("We have files");
             }
 
             if (source === "home") {
