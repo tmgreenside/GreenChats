@@ -1,4 +1,5 @@
 var multer  = require('multer');
+var fs = require('fs-extra');
 var pool = require('../Database/db');
 
 exports.submitPost = function(req, res, source) {
@@ -10,8 +11,20 @@ exports.submitPost = function(req, res, source) {
         }
         else {
             if (req.files) {
+                var fileName;
+                var originalName;
+                var userDir = req.session.user.id;
                 for (var file in req.files) {
-                    console.log(req.files[file].originalname);
+                    fileName = req.files[file].filename;
+                    originalName = req.files[file].originalname;
+                    fs.move('../uploads/' + fileName, '../uploads/' + userDir + '/' + originalName, function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                        else {
+                            console.log("Success");
+                        }
+                    });
                 }
             }
 
