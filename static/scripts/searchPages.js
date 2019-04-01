@@ -1,6 +1,7 @@
 var progressTimeout = null;
 
 function submitSearchRequest() {
+    var searchParams = $("#searchPages").val();
     
 }
 
