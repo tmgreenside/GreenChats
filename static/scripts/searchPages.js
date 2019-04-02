@@ -1,19 +1,17 @@
-alert("searchPages script included");
-
 var progressTimeout = null;
 
 function submitSearchRequest() {
-    alert("Function call successful");
-    // var searchParams = $("#searchPages").val();
-    // $.ajax({
-	// 	type: "POST",
-    //     data: {
-    //         'searchParams': searchParams
-    //     },
-    //     success: function(data) {
-    //         $('#searchResults').html(data);
-    //     }
-    // });
+    var searchParams = $("#searchPages").val();
+    $.ajax({
+		type: "POST",
+        data: {
+            'searchParams': searchParams
+        },
+        url: "/searchFriends",
+        success: function(data) {
+            $('#searchResults').html(data);
+        }
+    });
 }
 
 $(document).ready(function() {
