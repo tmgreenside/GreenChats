@@ -1,3 +1,5 @@
+alert("searchPages script included");
+
 var progressTimeout = null;
 
 function submitSearchRequest() {
@@ -16,10 +18,9 @@ function submitSearchRequest() {
 
 $(document).ready(function() {
     $('#searchPages').on("keydown paste", function() {
-        alert("Thing is typed");
 		if (progressTimeout) {
 			clearTimeout(progressTimeout);
 		}
 		progressTimeout = setTimeout(submitSearchRequest, 500);
 	});
-}
+});
