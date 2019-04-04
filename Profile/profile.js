@@ -34,4 +34,6 @@ router.post('/home', upload.any('uploadFiles'), main.postFromHome);
 
 router.post('/searchFriends', search.search);
 
+router.get('/profile', main.viewProfile);
+
 module.exports = router;

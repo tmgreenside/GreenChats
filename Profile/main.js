@@ -45,5 +45,5 @@ TO DO: add privacy functionality so that some users can see the whole
 profile while others (i.e. non-friends) cannot.
 */
 exports.viewProfile = function(req, res) {
-
+    showProfile(req.query.id, req, res);
 }
