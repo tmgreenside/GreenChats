@@ -24,6 +24,7 @@ exports.submitPost = function(req, res, source) {
         }
         else {
             if (req.files) {
+                console.log(result.id);
                 setTimeout(moveFiles, 1000, req);
             }
 

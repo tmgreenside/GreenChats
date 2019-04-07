@@ -1,12 +1,20 @@
 <head>
     <title>GreenChats | <%= firstname %> <%= lastname %></title>
+    <link type="text/css" rel="stylesheet" href="/css/profile.css"/>
+
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/searchPages.js"></script>
 </head>
 <body>
     <div id="top_bar">
-        <input type="text" id="searchPages" name="searchPages" placeholder="Search here">
-        <div id="searchResults" name="searchResults"></div>
+        <div id="searchbar">
+            <input type="text" id="searchPages" name="searchPages" placeholder="Search here">
+            <div id="searchResults" name="searchResults"></div>
+        </div>
+        <div id="links">
+            <a href="/home">Home</a>
+            <a href="/wall">Wall</a>
+        </div>
     </div>
     <div id="main_body">
         <%- content %>

@@ -18,6 +18,7 @@ function showProfile(profileID, req, res) {
             else {
                 context.resultPosts = result;
                 pool.query(mediaPosts, [req.session.user.id, req.session.user.id], function(err, result2) {
+                    context.resultMedia = result2;
                     res.render('profile/profile', context);
                 });
             }
@@ -34,7 +35,7 @@ exports.getHomePage = function(req, res) {
 }
 
 exports.postFromHome = function(req, res) {
-    submitPost(req, res, "home");
+    blogger.submitPost(req, res, "home");
 }
 
 /*

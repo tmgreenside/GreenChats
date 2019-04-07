@@ -32,6 +32,11 @@
             <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
             <article><%- resultPosts[i]['postText'].replace(/\n/g, "<br>") %></article>
         </div>
+        <% for (var j in resultPosts) { %>
+            <% if (resultMedia[j]['postID'] == resultPosts[i]['id']) { %>
+                <image href="<%= resultMedia[j]['filePath']%>"
+            <% } %>
+        <% } %>
     <% } %>
 </div>
 

@@ -27,7 +27,8 @@ app.use(session({
     secret: "lucky_cat",
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    maxAge: (1000 * 60 * 60 * 24) // cookie should be saved for 24 hrs
  }));
 
 app.use(cookieParser());
