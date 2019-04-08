@@ -27,13 +27,17 @@
         <input type="submit" value="Share"></input>
     </form>
     <% var imageCount = 0; %>
-    <% for (var i in resultPosts) { %>
+    <% for (var i= 0; i < resultPosts.length; i++) { %>
         <div class="blogPost">
             <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
             <article><%- resultPosts[i]['postText'].replace(/\n/g, "<br>") %></article>
-            <% for (var j in resultMedia) { %>
+            <% for (var j = 0; j < resultMedia.length; j++) { %>
                 <% if (resultMedia[j]['postID'] === resultPosts[i]['id']) { %>
-                    <img src="<%= resultMedia[j]['filePath']%>" />
+                    <% if (resultMedia[j]['type'] === "image/jpeg") { %>
+                        <img src="<%= resultMedia[j]['filePath']%>" />
+                    <% } else { %>
+                        <p>File type not supported at this time.</p>
+                    <% } %>
                 <% } %>
             <% } %>
         </div>
