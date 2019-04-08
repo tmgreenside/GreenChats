@@ -10,5 +10,10 @@
     <div class="blogPost">
         <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
         <article><%- resultPosts[i]['postText'].replace(/\n/g, "<br>") %></article>
+        <% for (var j in resultMedia) { %>
+            <% if (resultMedia[j]['postID'] === resultPosts[i]['id']) { %>
+                <img src="<%= resultMedia[j]['filePath']%>" />
+            <% } %>
+        <% } %>
     </div>
 <% } %>

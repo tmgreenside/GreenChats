@@ -6,7 +6,7 @@ var search = require('./search.js');
 
 var multer  = require('multer');
 var upload = multer({
-    dest: './uploads/'
+    dest: 'static/uploads/'
 });
 
 var router = express.Router();
