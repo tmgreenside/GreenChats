@@ -28,7 +28,7 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    maxAge: (1000 * 60 * 60 * 24) // cookie should be saved for 24 hrs
+    maxAge: (1000 * 60 * 5) // cookie should be saved for 5 minutes
  }));
 
 app.use(cookieParser());

@@ -26,7 +26,6 @@ exports.displayNewsFeed = function(req, res) {
             context.user = req.session.user;
             pool.query(mediaPosts, [req.session.user.id, req.session.user.id], function(err, result2) {
                 context.resultMedia = result2;
-                console.log(context);
                 res.render('profile/wall', context);
             });
         }
