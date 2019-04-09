@@ -4,7 +4,7 @@ var blogger = require('./blogger');
 function showProfile(profileID, req, res) {
     var dataQuery = "SELECT * FROM Users WHERE ID = ?";
     var queryPosts = "SELECT u.firstname, u.lastname, u.id, p.* FROM Posts as p, Users as u WHERE Profile IN (SELECT profile1 FROM Friendships WHERE profile2 = ?) OR Profile = ?";
-    var mediaPosts = "SELECT M.postID, M.type, M.filePath FROM PostMedia as M, Posts as P WHERE P.id = M.PostID AND P.profile IN (SELECT profile2 FROM Friendships WHERE profile1 = ?) OR P.profile = ?";
+    var mediaPosts = "SELECT M.postID, M.type, M.filePath FROM PostMedia as M, Posts as P WHERE M.PostID = P.id AND P.profile = ?";
     pool.query(dataQuery, [profileID], function(err, result) {
         var context = {
             user: result[0],
@@ -19,6 +19,7 @@ function showProfile(profileID, req, res) {
                 context.resultPosts = result;
                 pool.query(mediaPosts, [req.session.user.id, req.session.user.id], function(err, result) {
                     context.resultMedia = result;
+                    console.log(context);
                     res.render('profile/profile', context);
                 });
             }

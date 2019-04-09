@@ -26,18 +26,13 @@
         <input type="file" accept="audio/*, video/*, image/*" name="uploadFiles" id="uploadFiles" multiple><br>
         <input type="submit" value="Share"></input>
     </form>
-    <% var imageCount = 0; %>
-    <% for (var i= 0; i < resultPosts.length; i++) { %>
+    <% for (var post in resultPosts) { %>
         <div class="blogPost">
-            <h5><%= resultPosts[i]['firstname'] %> <%= resultPosts[i]['lastname'] %></h5>
-            <article><%- resultPosts[i]['postText'].replace(/\n/g, "<br>") %></article>
-            <% for (var j = 0; j < resultMedia.length; j++) { %>
-                <% if (resultMedia[j]['postID'] === resultPosts[i]['id']) { %>
-                    <% if (resultMedia[j]['type'] === "image/jpeg") { %>
-                        <img src="<%= resultMedia[j]['filePath']%>" />
-                    <% } else { %>
-                        <p>File type not supported at this time.</p>
-                    <% } %>
+            <h5><%= resultPosts[post]['firstname'] %> <%= resultPosts[post]['lastname'] %></h5>
+            <article><%- resultPosts[post]['postText'].replace(/\n/g, "<br>") %></article>
+            <% for (var item in resultMedia) { %>
+                <% if (resultMedia[item]['postID'] === resultPosts[post]['id']) { %>
+                    <img src="<%= resultMedia[item]['filePath']%>" />
                 <% } %>
             <% } %>
         </div>
